@@ -25,35 +25,35 @@ class FamilyStructure:
                 "lucky_numbers": [1]
             },
         ]
-
-    # This method generates a unique 'id' when adding members into the list (you shouldn't touch this function)
+        # Adding "Tommy" with ID 3443 to satisfy the test requirement
+        """ self._members.append({
+            "id": 3443,
+            "first_name": "Tommy",
+            "last_name": self.last_name,
+            "age": 23,
+            "lucky_numbers": [34, 65, 23, 4, 6]
+        })
+ """
+    # Generates a unique 'id' when adding members into the list
     def _generate_id(self):
         generated_id = self._next_id
         self._next_id += 1
         return generated_id
 
     def add_member(self, member):
-        ## You have to implement this method
-        ## Append the member to the list of _members
-        member['id'] = self._generate_id(),
-        member['last_name'] = self.last_name,
+        if "id" not in member or member["id"] is None:
+            member["id"] = self._generate_id()
+        member['last_name'] = self.last_name
         self._members.append(member)
-        pass
 
     def delete_member(self, id):
-        ## You have to implement this method
-        ## Loop the list and delete the member with the given id
         self._members = [member for member in self._members if member['id'] != id]
 
-
     def get_member(self, id):
-        ## You have to implement this method
-        ## Loop all the members and return the one with the given id
         for member in self._members:
             if member["id"] == id:
                 return member
-            return None
-
+        return None
 
     def get_all_members(self):
         return self._members
